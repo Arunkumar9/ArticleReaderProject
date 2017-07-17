@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AppHeaderComp } from './Components/Header/app.headercomp';
 import { AppArticleTree } from './Components/ArticleTree/app.articletree';
 import { AppArticleTabView } from './Components/Articles/app.articletabview';
+import { AppArticleDashBoard } from './Components/ArticleDashboard/app.articledashboard';
 
 import { Routing } from './app.routing';
 
@@ -50,7 +51,8 @@ import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
     AppComponent,
     AppHeaderComp,
     AppArticleTree,
-    AppArticleTabView
+    AppArticleTabView,
+    AppArticleDashBoard
   ], 
   providers: [TreeDragDropService,ArticleTreeService],
   bootstrap: [AppComponent]

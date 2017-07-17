@@ -49,9 +49,8 @@ export class AppArticleTree implements OnInit{
         var dragNode = event.dragNode;
         var dropNode = event.dropNode;
         if(dragNode != "" && dragNode != null && !dragNode){
-
+            this.articleTreeService.setArticleTreeValues(this.articles);
         }
-        return false;
     }
 
     onArticleNodeSelect(event){
@@ -61,7 +60,7 @@ export class AppArticleTree implements OnInit{
 
         //We are redirecting the view to the article tab where it will show the 
         if(node.leaf == false){
-            let link = ['/articleDetails',node.id];
+            let link = ['/articleDashboard',node.id];
 		    this.router.navigate(link);
         }
     }

@@ -7,5 +7,6 @@ export const AppURL = {
     "ThemesURL": "./assets/json/theme/theme.json",
     "LanguageURL": "./assets/json/languages/language.json",
     "ArticleTreeURL":"./assets/json/articletree/articletree.json",
-    "SwitchViewURL":"./assets/json/articletree/articleView.json"
+    "SwitchViewURL":"./assets/json/articletree/articleView.json",
+    "LeafBaseURL":"./assets/html/articleInfo/"
 };

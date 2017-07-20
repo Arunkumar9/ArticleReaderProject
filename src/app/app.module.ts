@@ -11,8 +11,8 @@ import { InMemoryWebApiModule }     from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { AppHeaderComp } from './Components/Header/app.headercomp';
 import { AppArticleTree } from './Components/ArticleTree/app.articletree';
-import { AppArticleTabView } from './Components/Articles/app.articletabview';
 import { AppArticleDashBoard } from './Components/ArticleDashboard/app.articledashboard';
+import { AppArticleTab } from './Components/ArticleDashboard/app.articletab';
 
 import { Routing } from './app.routing';
 
@@ -26,6 +26,8 @@ import { DataGridModule,PanelModule,DataListModule } from 'primeng/primeng';
 //import { DragDropModule } from 'primeng/primeng';
 
 import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
+import { ArticleTabService } from './Services/ArticleTree/articletab.service';
+
 //import { InMemoryDataService } from './Services/ArticleTree/articletreeinmemory.service';
 
 @NgModule({
@@ -51,10 +53,10 @@ import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
     AppComponent,
     AppHeaderComp,
     AppArticleTree,
-    AppArticleTabView,
-    AppArticleDashBoard
+    AppArticleDashBoard,
+    AppArticleTab
   ], 
-  providers: [TreeDragDropService,ArticleTreeService],
+  providers: [TreeDragDropService,ArticleTreeService,ArticleTabService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -59,9 +59,9 @@ export class AppArticleTree implements OnInit{
         this.articleTreeService.setArticleTreeValues(this.articles);
 
         //We are redirecting the view to the article tab where it will show the 
-        if(node.leaf == false){
+        //if(node.leaf == false){
             let link = ['/articleDashboard',node.id];
 		    this.router.navigate(link);
-        }
+        //}
     }
 }

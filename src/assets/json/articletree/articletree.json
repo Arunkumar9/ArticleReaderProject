@@ -147,7 +147,7 @@
                         {
                             "label": "Classes",
                             "icon": "fa-file-pdf-o",
-                            "id": "Classes",
+                            "id": "JavaClasses",
                             "children": [],
                             "leaf": true,
                             "droppable":false,
@@ -158,7 +158,7 @@
                         {
                             "label": "Interfaces",
                             "icon": "fa-file-pdf-o",
-                            "id": "Interfaces",
+                            "id": "JavaInterfaces",
                             "children": [],
                             "leaf": true,
                             "droppable":false,
@@ -169,7 +169,7 @@
                         {
                             "label": "Abstract Classes", 
                             "icon": "fa-file-pdf-o",
-                            "id": "AbstractClasses",
+                            "id": "JavaAbstractClasses",
                             "children": [],
                             "leaf": true,
                             "droppable":false,

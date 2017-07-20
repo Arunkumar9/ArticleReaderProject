@@ -16,6 +16,8 @@ import {TreeModule,TreeNode} from 'primeng/primeng';
 
 import { ArticlesModel } from '../../Models/Articles/articles';
 
+import { AppArticleTab } from './app.articletab';
+
 @Component({
     selector : 'app-articledashboard',
     templateUrl : './app.articledashboard.html',
@@ -23,8 +25,10 @@ import { ArticlesModel } from '../../Models/Articles/articles';
 })
 
 export class AppArticleDashBoard implements OnInit{
-    treeValues:any;
+    treeValues:TreeNode[];
     articleHeaderText: string;
+    childArticleHeaderText: string;
+    articleData: string;
     articleDetails:ArticlesModel[];
     errorMessage: string;
     switchViewText = AppStringConstants.SwitchView;
@@ -33,7 +37,12 @@ export class AppArticleDashBoard implements OnInit{
     numLimit:Number;
     readMore:string;
     linkparams:any;
+    dashboardSelected:boolean = true;
+    showArticleInfoTab:boolean = false;
+    index:number = 0;
 
+    public articleTabArray: Array<any> = [];
+    
     constructor(private articleTreeService: ArticleTreeService,
                 private route: ActivatedRoute,
                 private location: Location) {
@@ -76,38 +85,67 @@ export class AppArticleDashBoard implements OnInit{
 
     findDashboardContent(parentID){
         let id = parentID['id'];
-        var treeNodes = this.treeValues[0];
+        var treeNodes = this.treeValues[0] as any;
         if(treeNodes.id == id){
-            if(treeNodes.leaf == true){
-                //TODO: Write code for Opening the respective Articles Content.
-            }else{
-                this.articleHeaderText = treeNodes.label;
-                var articleItemArray = new Array();
-                articleItemArray = this.prepareDataforArticleLaunch(treeNodes,articleItemArray);   
-                this.articleDetails =  articleItemArray as ArticlesModel[];
-            }                         
+            this.articleHeaderText = treeNodes.label;
+            var articleItemArray = new Array();
+            articleItemArray = this.prepareDataforArticleLaunch(treeNodes,articleItemArray);   
+            this.articleDetails =  articleItemArray as ArticlesModel[];
+            this.index = 0;                         
         }else{
-            this.findArticleHeader(treeNodes.children,id);
+            this.findArticleHeader(treeNodes,id);
         }
     }
 
-    findArticleHeader(childNodes,id){
+    findArticleHeader(parentNode,id){
+        var childNodes = parentNode.children;
         for(var i=0;i<childNodes.length;i++){
             var childItem = childNodes[i];
             if(childItem.id == id){
                 if(childItem.leaf == true){
-                    //TODO: Write code for Opening the respective Articles Content.
+                    
+                    //Load The parent info on the DashBoard
+                    this.articleHeaderText = parentNode.label;
+                    var articleItemArray = new Array();
+                    articleItemArray = this.prepareDataforArticleLaunch(parentNode,articleItemArray);   
+                    this.articleDetails =  articleItemArray as ArticlesModel[];
+
+                    //Load Leaf node related info here.
+                    this.showArticleInfoTab = true;
+                    this.childArticleHeaderText = childItem.label;
+
+                    this.articleTreeService.getLeafInfo(childItem.id)
+                        .subscribe(
+                            (response:any)=> {
+                                //this.articleData = articleData;
+                                //this.index = 1;
+                                var url = response.url;
+                                var id = url.split('?')[1];
+                                var articleData = response._body;
+                                for(var i=0;i<this.articleTabArray.length;i++){
+                                    var rec = this.articleTabArray[i];
+                                    rec.selected = false;
+                                }
+                                //this.dashboardSelected = false;
+
+                                this.articleTabArray.push({'title':this.childArticleHeaderText,'id':id,'articleData':articleData,'selected':true});
+                                
+                                //this.index = this.articleTabArray.length;
+                            },
+                            error =>  this.errorMessage = <any>error
+                        );
                 }else{
                     this.articleHeaderText = childItem.label;
                     var articleItemArray = new Array();
                     articleItemArray = this.prepareDataforArticleLaunch(childItem,articleItemArray);
-                    this.articleDetails =  articleItemArray as ArticlesModel[];   
+                    this.articleDetails =  articleItemArray as ArticlesModel[];  
+                    this.index = 0; 
                     break;
                 }                
             }else{
                 if(childItem.children != null && childItem.children != undefined){
                     if(childItem.children.length > 0){
-                        this.findArticleHeader(childItem.children,id);
+                        this.findArticleHeader(childItem,id);
                     }                    
                 }                
             }
@@ -141,5 +179,13 @@ export class AppArticleDashBoard implements OnInit{
 
     onSwitchViewChange(event){
         
+    }
+
+    handleChange(e) {
+        this.index = e.index;
+    }
+
+    onTabCreate(e){
+        debugger;
     }
 }

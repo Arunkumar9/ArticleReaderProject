@@ -64,6 +64,21 @@ export class ArticleTreeService {
                         .catch(this.handleError);
     }
 
+    getLeafInfo(leafId):Observable<string>{
+        var leafURL = AppURL.LeafBaseURL;
+        leafURL = leafURL+leafId+".html"+"?"+leafId;
+        return this.http.get(leafURL)
+                        .map(this.extractHTMLData)
+                        .catch(this.handleError);
+    }
+
+    private extractHTMLData(res) {
+        //let body = res._body;
+        //return body;
+        return res;
+    }
+
+    
     private handleError (error: Response | any) {
         //TODO: need to learn how to use the angular logging mechanisum
 

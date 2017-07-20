@@ -1,5 +1,5 @@
-<p-tabView class="ui-tabview-nav">
-    <p-tabPanel header="{{articleHeaderText}}">
+<p-tabView [activeIndex]="index" class="ui-tabview-nav" (onChange)="handleChange($event)">
+    <p-tabPanel header="{{articleHeaderText}}" >
         <p-toolbar>
             <div class="ui-toolbar-group-right">
                 <p-dropdown  [options]="switchViews" class="themeDropdown" 
@@ -54,52 +54,13 @@
             </p-dataList>
         </div>  
     </p-tabPanel>
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel> 
-    <p-tabPanel header="SecondTabpanel">
-        SecondTabpanel1
-    </p-tabPanel> 
-    <p-tabPanel header="3Tabpanel">
-        SecondTabpanel3
-    </p-tabPanel>  
+    <!-- <p-tabPanel header="{{childArticleHeaderText}}"  *ngIf="showArticleInfoTab">
+        <div [innerHTML]="articleData"></div>
+    </p-tabPanel>  -->
+    <p-tabPanel *ngFor="let aTab of articleTabArray" header="{{aTab.title}}" id="{{aTab.id}}" (onInit)="onTabCreate($scope)">
+            <div [innerHTML]="aTab.articleData"></div> 
+    </p-tabPanel>
+    <!-- <app-articletab> </app-articletab> -->
+
 </p-tabView>
+

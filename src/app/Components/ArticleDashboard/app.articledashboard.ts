@@ -37,11 +37,12 @@ export class AppArticleDashBoard implements OnInit{
     numLimit:Number;
     readMore:string;
     linkparams:any;
-    dashboardSelected:boolean = true;
+    dashboardSelected:boolean = false;
     showArticleInfoTab:boolean = false;
     index:number = 0;
 
-    public articleTabArray: Array<any> = [];
+    public articleDashboardArray: Array<any> = [];
+    public articleTabArray: Array<any> = [];   
     
     constructor(private articleTreeService: ArticleTreeService,
                 private route: ActivatedRoute,
@@ -54,7 +55,7 @@ export class AppArticleDashBoard implements OnInit{
     ngOnInit(){
         //This will get the Swtich View details
         this.getSwithViewData();
-
+        
         //With JSON file data will be received
         this.treeValues =  this.articleTreeService.getArticleTreeValues();
 
@@ -88,6 +89,8 @@ export class AppArticleDashBoard implements OnInit{
         var treeNodes = this.treeValues[0] as any;
         if(treeNodes.id == id){
             this.articleHeaderText = treeNodes.label;
+            this.articleDashboardArray = [];
+            this.articleDashboardArray.push({'headerText':treeNodes.label,'id':treeNodes.id,'selected':true});
             var articleItemArray = new Array();
             articleItemArray = this.prepareDataforArticleLaunch(treeNodes,articleItemArray);   
             this.articleDetails =  articleItemArray as ArticlesModel[];
@@ -106,9 +109,12 @@ export class AppArticleDashBoard implements OnInit{
                     
                     //Load The parent info on the DashBoard
                     this.articleHeaderText = parentNode.label;
+                    
                     var articleItemArray = new Array();
                     articleItemArray = this.prepareDataforArticleLaunch(parentNode,articleItemArray);   
                     this.articleDetails =  articleItemArray as ArticlesModel[];
+
+                    this.dashboardSelected = true;
 
                     //Load Leaf node related info here.
                     this.showArticleInfoTab = true;
@@ -126,9 +132,11 @@ export class AppArticleDashBoard implements OnInit{
                                     var rec = this.articleTabArray[i];
                                     rec.selected = false;
                                 }
-                                //this.dashboardSelected = false;
-
+                                
                                 this.articleTabArray.push({'title':this.childArticleHeaderText,'id':id,'articleData':articleData,'selected':true});
+
+                                this.articleDashboardArray = [];
+                                this.articleDashboardArray.push({'headerText':parentNode.label,'id':parentNode.id,'selected':false});
                                 
                                 //this.index = this.articleTabArray.length;
                             },
@@ -136,6 +144,8 @@ export class AppArticleDashBoard implements OnInit{
                         );
                 }else{
                     this.articleHeaderText = childItem.label;
+                    this.articleDashboardArray = [];
+                    this.articleDashboardArray.push({'headerText':childItem.label,'id':childItem.id,'selected':true});
                     var articleItemArray = new Array();
                     articleItemArray = this.prepareDataforArticleLaunch(childItem,articleItemArray);
                     this.articleDetails =  articleItemArray as ArticlesModel[];  
@@ -182,10 +192,15 @@ export class AppArticleDashBoard implements OnInit{
     }
 
     handleChange(e) {
+        debugger;
         this.index = e.index;
     }
 
-    onTabCreate(e){
+    onTabSelect(e){
+        debugger;
+    }
+
+    onTabContentChange(e){
         debugger;
     }
 }

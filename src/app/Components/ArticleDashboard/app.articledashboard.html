@@ -1,5 +1,5 @@
-<p-tabView [activeIndex]="index" class="ui-tabview-nav" (onChange)="handleChange($event)">
-    <p-tabPanel header="{{articleHeaderText}}" >
+<p-tabView  class="ui-tabview-nav" (onChange)="handleChange($event)">
+    <p-tabPanel *ngFor="let adTab of articleDashboardArray" header="{{adTab.headerText}}" id="{{adTab.id}}" [selected]="adTab.selected">
         <p-toolbar>
             <div class="ui-toolbar-group-right">
                 <p-dropdown  [options]="switchViews" class="themeDropdown" 
@@ -57,8 +57,8 @@
     <!-- <p-tabPanel header="{{childArticleHeaderText}}"  *ngIf="showArticleInfoTab">
         <div [innerHTML]="articleData"></div>
     </p-tabPanel>  -->
-    <p-tabPanel *ngFor="let aTab of articleTabArray" header="{{aTab.title}}" id="{{aTab.id}}" (onInit)="onTabCreate($scope)">
-            <div [innerHTML]="aTab.articleData"></div> 
+    <p-tabPanel *ngFor="let aTab of articleTabArray" header="{{aTab.title}}" id="{{aTab.id}}" [selected]="aTab.selected">
+            <div [innerHTML]="aTab.articleData" (onChange)="onTabContentChange($event)"></div> 
     </p-tabPanel>
     <!-- <app-articletab> </app-articletab> -->
 

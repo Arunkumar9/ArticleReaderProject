@@ -88,16 +88,20 @@ export class AppArticleDashBoard implements OnInit{
     findDashboardContent(parentID){
         let id = parentID['id'];
         var treeNodes = this.treeValues[0] as any;
-        if(treeNodes.id == id){
-            this.articleHeaderText = treeNodes.label;
-            this.articleDashboardArray = [];
-            this.articleDashboardArray.push({'headerText':treeNodes.label,'id':treeNodes.id,'selected':true});
-            var articleItemArray = new Array();
-            articleItemArray = this.prepareDataforArticleLaunch(treeNodes,articleItemArray);   
-            this.articleDetails =  articleItemArray as ArticlesModel[];
-            this.index = 0;                         
+        if(id == 'ArticleStates'){
+            //To Do Stats related code here.
         }else{
-            this.findArticleHeader(treeNodes,id);
+            if(treeNodes.id == id){
+                this.articleHeaderText = treeNodes.label;
+                this.articleDashboardArray = [];
+                this.articleDashboardArray.push({'headerText':treeNodes.label,'id':treeNodes.id,'selected':true});
+                var articleItemArray = new Array();
+                articleItemArray = this.prepareDataforArticleLaunch(treeNodes,articleItemArray);   
+                this.articleDetails =  articleItemArray as ArticlesModel[];
+                this.index = 0;                         
+            }else{
+                this.findArticleHeader(treeNodes,id);
+            }
         }
     }
 

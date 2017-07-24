@@ -3,6 +3,8 @@ import { Component,OnInit } from '@angular/core';
 import { AppConstants }     from '../../../assets/app.constants';
 import { AppStringConstants } from '../../../assets/app.Stringconstants';
 
+import { Router } from '@angular/router';
+
 @Component({
     selector : 'app-administration',
     templateUrl : './app.administration.html',
@@ -14,11 +16,16 @@ export class AppAdministration implements OnInit{
     tabId: string;
     articleData: string;
 
-    constructor() {
+    constructor(private router:Router) {
     }
 
     ngOnInit(){
         //this.articleTreeService.getSwitchViews()
                           //.subscribe(switchViews => this.switchViews = switchViews, error =>  this.errorMessage = <any>error);
+    }
+
+    onStutusClick(event){
+        let link = ['/articleStatistics','ArticleStates'];
+        this.router.navigate(link);
     }
 }

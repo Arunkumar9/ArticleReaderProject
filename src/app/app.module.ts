@@ -13,6 +13,7 @@ import { AppHeaderComp } from './Components/Header/app.headercomp';
 import { AppArticleTree } from './Components/ArticleTree/app.articletree';
 import { AppArticleDashBoard } from './Components/ArticleDashboard/app.articledashboard';
 import { AppAdministration } from './Components/Administration/app.administration';
+import { AppArticleStatus } from './Components/Administration/app.stats';
 
 import { Routing } from './app.routing';
 
@@ -22,11 +23,12 @@ import { TreeDragDropService } from 'primeng/primeng';
 import { TabViewModule } from 'primeng/primeng';
 import { ToolbarModule } from 'primeng/primeng';
 import { DataGridModule,PanelModule,DataListModule } from 'primeng/primeng';
-import {ChartModule} from 'primeng/primeng';
+import { ChartModule } from 'primeng/primeng';
 
 //import { DragDropModule } from 'primeng/primeng';
 
 import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
+import { ArticleStatsService } from './Services/ArticleTree/articlestats.service';
 
 //import { InMemoryDataService } from './Services/ArticleTree/articletreeinmemory.service';
 
@@ -46,7 +48,8 @@ import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
     DataGridModule,
     PanelModule,
     FormsModule,
-    DataListModule
+    DataListModule,
+    ChartModule
     //InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
@@ -54,9 +57,10 @@ import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
     AppHeaderComp,
     AppArticleTree,
     AppArticleDashBoard,
-    AppAdministration
+    AppAdministration,
+    AppArticleStatus
   ], 
-  providers: [TreeDragDropService,ArticleTreeService],
+  providers: [TreeDragDropService,ArticleTreeService,ArticleStatsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

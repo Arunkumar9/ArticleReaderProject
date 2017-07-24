@@ -16,7 +16,8 @@ import {TreeModule,TreeNode} from 'primeng/primeng';
 
 import { ArticlesModel } from '../../Models/Articles/articles';
 
-import { AppArticleTab } from './app.articletab';
+import { AppAdministration } from '../Administration/app.administration';
+
 
 @Component({
     selector : 'app-articledashboard',
@@ -128,12 +129,19 @@ export class AppArticleDashBoard implements OnInit{
                                 var url = response.url;
                                 var id = url.split('?')[1];
                                 var articleData = response._body;
+                                var isArticleFound = false;
                                 for(var i=0;i<this.articleTabArray.length;i++){
                                     var rec = this.articleTabArray[i];
-                                    rec.selected = false;
+                                    if(id == rec.id){
+                                        rec.selected = true; 
+                                        isArticleFound = true;   
+                                    }else{
+                                        rec.selected = false;
+                                    }                                    
                                 }
-                                
-                                this.articleTabArray.push({'title':this.childArticleHeaderText,'id':id,'articleData':articleData,'selected':true});
+                                if(!isArticleFound){
+                                    this.articleTabArray.push({'title':this.childArticleHeaderText,'id':id,'articleData':articleData,'selected':true});
+                                }                                
 
                                 this.articleDashboardArray = [];
                                 this.articleDashboardArray.push({'headerText':parentNode.label,'id':parentNode.id,'selected':false});
@@ -141,7 +149,7 @@ export class AppArticleDashBoard implements OnInit{
                                 //this.index = this.articleTabArray.length;
                             },
                             error =>  this.errorMessage = <any>error
-                        );
+                        );                    
                 }else{
                     this.articleHeaderText = childItem.label;
                     this.articleDashboardArray = [];
@@ -189,18 +197,5 @@ export class AppArticleDashBoard implements OnInit{
 
     onSwitchViewChange(event){
         
-    }
-
-    handleChange(e) {
-        debugger;
-        this.index = e.index;
-    }
-
-    onTabSelect(e){
-        debugger;
-    }
-
-    onTabContentChange(e){
-        debugger;
     }
 }

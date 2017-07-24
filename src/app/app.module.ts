@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AppHeaderComp } from './Components/Header/app.headercomp';
 import { AppArticleTree } from './Components/ArticleTree/app.articletree';
 import { AppArticleDashBoard } from './Components/ArticleDashboard/app.articledashboard';
-import { AppArticleTab } from './Components/ArticleDashboard/app.articletab';
+import { AppAdministration } from './Components/Administration/app.administration';
 
 import { Routing } from './app.routing';
 
@@ -22,17 +22,17 @@ import { TreeDragDropService } from 'primeng/primeng';
 import { TabViewModule } from 'primeng/primeng';
 import { ToolbarModule } from 'primeng/primeng';
 import { DataGridModule,PanelModule,DataListModule } from 'primeng/primeng';
+import {ChartModule} from 'primeng/primeng';
 
 //import { DragDropModule } from 'primeng/primeng';
 
 import { ArticleTreeService } from './Services/ArticleTree/articletree.service';
-import { ArticleTabService } from './Services/ArticleTree/articletab.service';
 
 //import { InMemoryDataService } from './Services/ArticleTree/articletreeinmemory.service';
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     TruncateModule,
     BrowserModule,
     HttpModule,
@@ -54,9 +54,9 @@ import { ArticleTabService } from './Services/ArticleTree/articletab.service';
     AppHeaderComp,
     AppArticleTree,
     AppArticleDashBoard,
-    AppArticleTab
+    AppAdministration
   ], 
-  providers: [TreeDragDropService,ArticleTreeService,ArticleTabService],
+  providers: [TreeDragDropService,ArticleTreeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

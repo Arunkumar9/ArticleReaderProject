@@ -1,4 +1,4 @@
-<p-tabView  class="ui-tabview-nav" (onChange)="handleChange($event)">
+<p-tabView >
     <p-tabPanel *ngFor="let adTab of articleDashboardArray" header="{{adTab.headerText}}" id="{{adTab.id}}" [selected]="adTab.selected">
         <p-toolbar>
             <div class="ui-toolbar-group-right">
@@ -54,13 +54,8 @@
             </p-dataList>
         </div>  
     </p-tabPanel>
-    <!-- <p-tabPanel header="{{childArticleHeaderText}}"  *ngIf="showArticleInfoTab">
-        <div [innerHTML]="articleData"></div>
-    </p-tabPanel>  -->
     <p-tabPanel *ngFor="let aTab of articleTabArray" header="{{aTab.title}}" id="{{aTab.id}}" [selected]="aTab.selected">
-            <div [innerHTML]="aTab.articleData" (onChange)="onTabContentChange($event)"></div> 
+            <div [innerHTML]="aTab.articleData"></div> 
     </p-tabPanel>
-    <!-- <app-articletab> </app-articletab> -->
-
 </p-tabView>
 

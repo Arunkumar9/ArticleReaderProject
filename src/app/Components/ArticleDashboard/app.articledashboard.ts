@@ -29,6 +29,7 @@ export class AppArticleDashBoard implements OnInit{
     treeValues:TreeNode[];
     articleHeaderText: string;
     childArticleHeaderText: string;
+    articleStatsheaderText:string;
     articleData: string;
     articleDetails:ArticlesModel[];
     errorMessage: string;
@@ -39,7 +40,7 @@ export class AppArticleDashBoard implements OnInit{
     readMore:string;
     linkparams:any;
     dashboardSelected:boolean = false;
-    showArticleInfoTab:boolean = false;
+    showArticleStatsTab:boolean = false;
     index:number = 0;
 
     public articleDashboardArray: Array<any> = [];
@@ -51,6 +52,8 @@ export class AppArticleDashBoard implements OnInit{
         this.selectedDataModel = AppConstants.ThumbnailView;
         this.numLimit = AppConstants.ReadMoreMinLength;
         this.readMore = AppConstants.ReadMoreText;
+        this.articleStatsheaderText = AppConstants.ArticleStatsHeaderText;
+        this.showArticleStatsTab = false;
     }
 
     ngOnInit(){
@@ -121,8 +124,6 @@ export class AppArticleDashBoard implements OnInit{
 
                     this.dashboardSelected = true;
 
-                    //Load Leaf node related info here.
-                    this.showArticleInfoTab = true;
                     this.childArticleHeaderText = childItem.label;
 
                     this.articleTreeService.getLeafInfo(childItem.id)
@@ -201,5 +202,16 @@ export class AppArticleDashBoard implements OnInit{
 
     onSwitchViewChange(event){
         
+    }
+
+    onTabChange(event){
+        for(var i=0;i<this.articleTabArray.length;i++){
+            var rec = this.articleTabArray[i];
+            if(event.index == i+1){
+                rec.selected = true; 
+            }else{
+                rec.selected = false;
+            }                                    
+        }
     }
 }

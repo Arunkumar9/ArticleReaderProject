@@ -11,5 +11,6 @@ export const AppConstants={
         "ReadMoreMinLength":30,
         "ReadMoreMaxLength":500,
         "ReadMoreText":"Read More...",
-        "ReadLessText":"Read Less..."
+        "ReadLessText":"Read Less...",
+        "ArticleStatsHeaderText":"Stats"
 };

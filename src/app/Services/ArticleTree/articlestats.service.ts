@@ -11,12 +11,19 @@ import { AppURL } from '../../../assets/app.AppURLs';
 @Injectable()
 export class ArticleStatsService {
     private articlePieStatUrl = AppURL.ArticlePieChartURL;
+    private articleColumnStatUrl = AppURL.ArticleColumnChartURL;
 
     constructor (private http: Http) {}
 
 
     getArticlePieStats(): Observable<any[]>{
         return this.http.get(this.articlePieStatUrl)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
+
+    getArticleColumnStats(): Observable<any[]>{
+        return this.http.get(this.articleColumnStatUrl)
                         .map(this.extractData)
                         .catch(this.handleError);
     }

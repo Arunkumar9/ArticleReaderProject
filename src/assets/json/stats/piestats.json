@@ -2,13 +2,13 @@
     "Data":{
         "legends": [
             {
-                "name":"Barcode Reader Component"
+                "name":"ExtJs"
             },
             {
-                "name":"Angular Introduction"
+                "name":"Angular"
             },
             {
-                "name":"Java Introduction"
+                "name":"Java"
             }
         ],
         "datasets": [

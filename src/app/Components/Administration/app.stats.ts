@@ -14,9 +14,13 @@ import { Location } from '@angular/common';
 })
 
 export class AppArticleStatus implements OnInit{
-    articlePieStats:Array<any>;
+    categoryPieStats:Array<any>;
     data: any;
-    finalData:any;
+    categoryData:any;
+
+    articleColumnStats:Array<any>;
+    articleData:any;
+    articlebarData:any;
     constructor(private articleStatsService: ArticleStatsService,
                 private route: ActivatedRoute,
                 private location: Location) {
@@ -26,15 +30,20 @@ export class AppArticleStatus implements OnInit{
     ngOnInit(){
         this.articleStatsService.getArticlePieStats()
                                .subscribe(articles=>{
-                                                this.articlePieStats = articles;
+                                                this.categoryPieStats = articles;
                                                 this.parepareDataforPie();
+                                         });
+        
+        this.articleStatsService.getArticleColumnStats()
+                               .subscribe(articles=>{
+                                                this.articleColumnStats = articles;
                                          });
     }
 
     parepareDataforPie(){
         this.data = {};
         this.data.labels = [];
-        var pieData = this.articlePieStats as any;
+        var pieData = this.categoryPieStats as any;
         
         for(var i=0;i<pieData.legends.length;i++){
             var legend = pieData.legends[i];
@@ -51,7 +60,42 @@ export class AppArticleStatus implements OnInit{
             }
         }
 
-        this.finalData = this.data;
+        this.categoryData = this.data;
+    }
+
+    onPieClick(event:any){
+        debugger;
+        var id = event.element._view.label;
+
+        this.articleData = {};
+        this.articleData.labels = [];
+        this.articleData.datasets = [];
+        var columnDataset = this.articleColumnStats as any;
+        var columnChartData = new Array();
+        var articleHitCountData = new Array();
+        var backgroundColorVal = "";
+        var borderColorVal = "";
+        for(var k=0;k<columnDataset.length;k++){
+            var lengends = columnDataset[k];
+            if(lengends.id == id){
+                columnChartData = lengends.children;
+                backgroundColorVal = lengends.backgroundColor;
+                borderColorVal     = lengends.borderColor;
+            }
+        }
+
+        if(columnChartData.length > 0){
+           
+            for(var l=0;l<columnChartData.length;l++){
+                var columnRec = columnChartData[l];
+                this.articleData.labels.push(columnRec.label);
+                articleHitCountData.push(columnRec.hitCount);
+            }
+
+            this.articleData.datasets.push({label:id,backgroundColor:backgroundColorVal,borderColor:borderColorVal,data:articleHitCountData});
+        }
+
+        this.articlebarData   = this.articleData;
     }
 
 }

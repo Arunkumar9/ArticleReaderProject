@@ -1,2 +1,10 @@
-<div> Stats module will come here<div>
-<p-chart type="pie" [data]="finalData"></p-chart>
+<div style='width:100%;float: left;'>
+    <div style='width:50%;float: left;'>
+        <div class="ghaphsHeader">Category-wise Hit Count</div>
+        <p-chart type="pie" [data]="categoryData" (onDataSelect)="onPieClick($event)"></p-chart>
+    </div>
+    <div style='width:50%;float: right;'>
+        <div class="ghaphsHeader">Article-wise Hit Count</div>
+        <p-chart type="bar" [data]="articlebarData" ></p-chart>
+    </div>
+</div>

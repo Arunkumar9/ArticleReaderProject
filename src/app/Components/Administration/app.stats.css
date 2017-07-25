@@ -1,0 +1,9 @@
+.ghaphsHeader{
+    float:left;
+    width:100%;
+    border:1px solid black;
+    background-color: #de7022;
+    height: 25px;
+    font-weight: bold;
+    text-align: center;
+}

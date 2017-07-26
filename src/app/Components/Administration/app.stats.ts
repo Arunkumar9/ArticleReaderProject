@@ -7,6 +7,9 @@ import { ArticleStatsService } from '../../Services/ArticleTree/articlestats.ser
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
+
+import { MonthlyStats } from '../../Models/Stats/MonthlyStats';
+
 @Component({
     selector : 'app-articlestatus',
     templateUrl : './app.stats.html',
@@ -21,6 +24,10 @@ export class AppArticleStatus implements OnInit{
     articleColumnStats:Array<any>;
     articleData:any;
     articlebarData:any;
+    categoryName:any;
+
+    monthlyStats:Array<any>;
+    
     constructor(private articleStatsService: ArticleStatsService,
                 private route: ActivatedRoute,
                 private location: Location) {
@@ -38,6 +45,11 @@ export class AppArticleStatus implements OnInit{
                                .subscribe(articles=>{
                                                 this.articleColumnStats = articles;
                                          });
+
+       this.articleStatsService.getMonthlyHitCountStats()
+                               .subscribe(articles=>{
+                                                this.monthlyStats = articles;
+                                         });                                 
     }
 
     parepareDataforPie(){
@@ -64,7 +76,6 @@ export class AppArticleStatus implements OnInit{
     }
 
     onPieClick(event:any){
-        debugger;
         var id = event.element._view.label;
 
         this.articleData = {};
@@ -84,18 +95,23 @@ export class AppArticleStatus implements OnInit{
             }
         }
 
-        if(columnChartData.length > 0){
-           
+        if(columnChartData.length > 0){           
             for(var l=0;l<columnChartData.length;l++){
                 var columnRec = columnChartData[l];
                 this.articleData.labels.push(columnRec.label);
                 articleHitCountData.push(columnRec.hitCount);
             }
-
             this.articleData.datasets.push({label:id,backgroundColor:backgroundColorVal,borderColor:borderColorVal,data:articleHitCountData});
         }
-
+        this.categoryName = id;
         this.articlebarData   = this.articleData;
+    }
+
+    onBarClick(event){
+        debugger;
+        //datasetLabel
+        var id = event.element._view.label;
+        var parentID = event.element._view.datasetLabel;
     }
 
 }

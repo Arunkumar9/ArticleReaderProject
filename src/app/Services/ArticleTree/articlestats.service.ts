@@ -8,10 +8,12 @@ import 'rxjs/add/operator/map';
 
 import { AppURL } from '../../../assets/app.AppURLs';
 
+
 @Injectable()
 export class ArticleStatsService {
     private articlePieStatUrl = AppURL.ArticlePieChartURL;
     private articleColumnStatUrl = AppURL.ArticleColumnChartURL;
+    private MonthlyHitCountStats = AppURL.MonthlyHitCountStats;
 
     constructor (private http: Http) {}
 
@@ -24,6 +26,12 @@ export class ArticleStatsService {
 
     getArticleColumnStats(): Observable<any[]>{
         return this.http.get(this.articleColumnStatUrl)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
+
+    getMonthlyHitCountStats(): Observable<any[]>{
+        return this.http.get(this.MonthlyHitCountStats)
                         .map(this.extractData)
                         .catch(this.handleError);
     }

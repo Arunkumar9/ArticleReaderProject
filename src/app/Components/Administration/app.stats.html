@@ -4,7 +4,10 @@
         <p-chart type="pie" [data]="categoryData" (onDataSelect)="onPieClick($event)"></p-chart>
     </div>
     <div style='width:50%;float: right;'>
-        <div class="ghaphsHeader">Article-wise Hit Count</div>
-        <p-chart type="bar" [data]="articlebarData" ></p-chart>
+        <div class="ghaphsHeader">{{categoryName}}-Article-wise Hit Count</div>
+        <p-chart type="bar" [data]="articlebarData" (onDataSelect)="onBarClick($event)"></p-chart>
+    </div>
+    <div style='width:100%;float: left;'>
+        
     </div>
 </div>

@@ -10,5 +10,6 @@ export const AppURL = {
     "SwitchViewURL":"./assets/json/articletree/articleView.json",
     "LeafBaseURL":"./assets/html/articleInfo/",
     "ArticlePieChartURL":"./assets/json/stats/piestats.json",
-    "ArticleColumnChartURL":"./assets/json/stats/columnstats.json"
+    "ArticleColumnChartURL":"./assets/json/stats/columnstats.json",
+    "MonthlyHitCountStats":"./assets/json/stats/monthlystats.json"
 };

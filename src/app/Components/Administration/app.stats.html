@@ -8,6 +8,10 @@
         <p-chart type="bar" [data]="articlebarData" (onDataSelect)="onBarClick($event)"></p-chart>
     </div>
     <div style='width:100%;float: left;'>
-        
+        <p-dataTable [value]="monthlyData">
+            
+            <p-column field="month" header="Month" [sortable]="true"></p-column>
+            <p-column field="hitCount" header="Hit Count" [sortable]="true"></p-column>
+        </p-dataTable>
     </div>
 </div>

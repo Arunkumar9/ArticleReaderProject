@@ -24,7 +24,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { ToolbarModule } from 'primeng/primeng';
 import { DataGridModule,PanelModule,DataListModule } from 'primeng/primeng';
 import { ChartModule } from 'primeng/primeng';
-import {DataTableModule,SharedModule} from 'primeng/primeng';
+import { DataTableModule,SharedModule } from 'primeng/primeng';
 
 //import { DragDropModule } from 'primeng/primeng';
 

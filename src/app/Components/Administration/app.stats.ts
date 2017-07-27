@@ -27,7 +27,9 @@ export class AppArticleStatus implements OnInit{
     categoryName:any;
 
     monthlyStats:Array<any>;
-    
+    monthlyData:MonthlyStats[];
+    monthlyHeading:string = 'Article-wise hit count';
+
     constructor(private articleStatsService: ArticleStatsService,
                 private route: ActivatedRoute,
                 private location: Location) {
@@ -108,10 +110,18 @@ export class AppArticleStatus implements OnInit{
     }
 
     onBarClick(event){
-        debugger;
-        //datasetLabel
         var id = event.element._view.label;
         var parentID = event.element._view.datasetLabel;
+        var monthlyStatistics = this.monthlyStats as any;
+
+        for(var m=0;m<monthlyStatistics.length;m++){
+            var monthRec = monthlyStatistics[m];
+            if(monthRec.label == id && monthRec.parentid == parentID){
+                this.monthlyHeading = parentID+"-"+id+"-"+'Article-wise hit count';
+                this.monthlyData = monthRec.monthlyHitCounts;
+                break;
+            }
+        }
     }
 
 }

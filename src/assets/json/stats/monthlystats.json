@@ -4,6 +4,7 @@
         {
             "label": "Barcode Reader Component", 
             "id": "BarcodeReaderComponent",
+            "parentid":"ExtJs",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -46,6 +47,7 @@
         },{
             "label": "Calender Component", 
             "id": "CalenderComponent",
+            "parentid":"ExtJs",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -88,6 +90,7 @@
         },{
             "label": "Introduction",
             "id": "AngularIntroduction",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -131,6 +134,7 @@
         {
             "label": "Component Life Cycle",
             "id": "ComponentLifeCycle",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -174,6 +178,7 @@
         {
             "label": "Modules",
             "id": "Modules",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -217,6 +222,7 @@
         {
             "label": "Components",
             "id": "Components",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -260,6 +266,7 @@
         {
             "label": "Data Binding",
             "id": "DataBinding",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -303,6 +310,7 @@
         {
             "label": "Services",
             "id": "Services",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -346,6 +354,7 @@
         {
             "label": "Dependency Injection",
             "id": "DependencyInjection",
+            "parentid":"Angular",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -388,6 +397,7 @@
         },{
             "label": "Introduction",
             "id": "JavaIntroduction",
+            "parentid":"Java",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -431,6 +441,7 @@
         {
             "label": "Classes",
             "id": "JavaClasses",
+            "parentid":"Java",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -474,6 +485,7 @@
         {
             "label": "Interfaces",
             "id": "JavaInterfaces",
+            "parentid":"Java",
             "monthlyHitCounts":[
                 {
                     "month":"January",
@@ -517,6 +529,7 @@
         {
             "label": "Abstract Classes",
             "id": "JavaAbstractClasses",
+            "parentid":"Java",
             "monthlyHitCounts":[
                 {
                     "month":"January",

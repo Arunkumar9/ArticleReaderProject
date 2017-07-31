@@ -1,8 +1,8 @@
-<p-tabView  i18n (onChange)="onTabChange($event)">
+<p-tabView  (onChange)="onTabChange($event)">
     <p-tabPanel i18n *ngFor="let adTab of articleDashboardArray" header="{{adTab.headerText}}" id="{{adTab.id}}" [selected]="adTab.selected">
         <p-toolbar>
             <div class="ui-toolbar-group-right">
-                <p-dropdown  i18n [options]="switchViews" class="themeDropdown" 
+                <p-dropdown  [options]="switchViews" class="themeDropdown" 
                 [style]="{'width':'160px','float':'right'}" editable="editable" placeholder='{{switchViewText}}' 
                 (onChange)="onSwitchViewChange($event)" [(ngModel)]="selectedDataModel"></p-dropdown>
             </div>
@@ -11,7 +11,7 @@
             <p-dataGrid [value]="articleDetails" [paginator]="true" [rows]="10">
                 <ng-template let-articleDetail pTemplate="item">
                     <div style="padding:3px" class="ui-g-12 ui-md-3">
-                        <p-panel i18n [header]="articleDetail.label" [style]="{'text-align':'center'}">
+                        <p-panel [header]="articleDetail.label" [style]="{'text-align':'center'}">
                             <img src="assets/images/articles/{{articleDetail.id}}.png" width="200" height="200">
                         </p-panel>
                     </div>
@@ -19,7 +19,7 @@
             </p-dataGrid>
         </div>
         <div *ngIf="selectedDataModel != 'Thumbnail View'">
-            <p-dataList i18n [value]="articleDetails" [paginator]="true" [rows]="10">
+            <p-dataList [value]="articleDetails" [paginator]="true" [rows]="10">
                 <ng-template let-articleDetail pTemplate="item">
                     <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;">
                         <div class="ui-grid-row">
@@ -27,22 +27,22 @@
                             <div class="ui-grid-col-9">
                                 <div class="ui-grid ui-grid-responsive ui-fluid">
                                     <div class="ui-grid-row">
-                                        <div i18n class="ui-grid-col-2">Title: </div>
-                                        <div i18n class="ui-grid-col-10">{{articleDetail.label}}</div>
+                                        <div class="ui-grid-col-2">Title: </div>
+                                        <div class="ui-grid-col-10">{{articleDetail.label}}</div>
                                     </div>
                                     <div class="ui-grid-row">
-                                        <div i18n class="ui-grid-col-2">Published ON: </div>
-                                        <div i18n class="ui-grid-col-10">{{articleDetail.publishedon}}</div>
+                                        <div class="ui-grid-col-2">Published ON: </div>
+                                        <div class="ui-grid-col-10">{{articleDetail.publishedon}}</div>
                                     </div>
                                     <div class="ui-grid-row">
-                                        <div i18n class="ui-grid-col-2">Author: </div>
-                                        <div i18n class="ui-grid-col-10">{{articleDetail.author}}</div>
+                                        <div class="ui-grid-col-2">Author: </div>
+                                        <div class="ui-grid-col-10">{{articleDetail.author}}</div>
                                     </div>
                                     <div class="ui-grid-row">
-                                        <div i18n class="ui-grid-col-2">Summary: </div>
-                                        <div i18n class="ui-grid-col-10">
-                                            <p i18n> {{articleDetail.summary | truncate :numLimit}} </p>
-                                                    <button i18n type='button' (click)="onReadMore($scope)">{{readMore}}</button>
+                                        <div class="ui-grid-col-2">Summary: </div>
+                                        <div class="ui-grid-col-10">
+                                            <p> {{articleDetail.summary | truncate :numLimit}} </p>
+                                                    <button type='button' (click)="onReadMore($scope)">{{readMore}}</button>
 
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
         </div>  
     </p-tabPanel>
     <p-tabPanel *ngFor="let aTab of articleTabArray" header="{{aTab.title}}" id="{{aTab.id}}" [selected]="aTab.selected">
-            <div i18n [innerHTML]="aTab.articleData"></div> 
+            <div [innerHTML]="aTab.articleData"></div> 
     </p-tabPanel>
 
     <!-- 

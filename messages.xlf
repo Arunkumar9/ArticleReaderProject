@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1f66c5c13506a977c2fc0d6a94c2a4097c1f5ca6" datatype="html">
+        <source>
+    Article Reader
+  </source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">C:/xampp/htdocs/AngularPractice/ArticleReader/src/app/Components/Header/app.headercomp.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "i18n": "ng-xi18n",
     "premakecss": "node-sass --include-path node_modules/ src/assets/themes/walkingtree/theme.scss -o src/assets/themes/walkingtree/",
     "makecss": "postcss src/assets/themes/walkingtree/theme.css --use autoprefixer -d src/assets/themes/walkingtree/",
     "prebuild:css": "npm run makecss",

@@ -9,10 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "premakecss": "node-sass --include-path node_modules/ src/assets/themes/gray/theme.scss -o src/assets/themes/gray/",
-    "makecss": "postcss src/assets/themes/gray/theme.css --use autoprefixer -d src/assets/themes/gray/",
+    "premakecss": "node-sass --include-path node_modules/ src/assets/themes/walkingtree/theme.scss -o src/assets/themes/walkingtree/",
+    "makecss": "postcss src/assets/themes/walkingtree/theme.css --use autoprefixer -d src/assets/themes/walkingtree/",
     "prebuild:css": "npm run makecss",
-    "build:css": "postcss src/assets/themes/gray/theme.css --use cssnano > src/assets/themes/gray/theme.min.css"
+    "build:css": "postcss src/assets/themes/walkingtree/theme.css --use cssnano > src/assets/themes/walkingtree/theme.min.css"
   },
   "private": true,
   "dependencies": {

@@ -10,3 +10,10 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.graphsSection{
+    float:left;
+    width:100%;
+    font-weight: bold;
+    text-align: center;
+}

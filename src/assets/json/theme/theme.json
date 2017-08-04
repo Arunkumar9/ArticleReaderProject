@@ -1,14 +1,18 @@
 {
     "Data":[
         {
+            "label":"Walkingtree",
+            "value":"walkingtree"
+        },
+        {
             "label":"Gray",
-            "value":"Gray"
+            "value":"gray"
         },{
             "label":"Classic",
-            "value":"Classic"
+            "value":"classic"
         },{
             "label":"Neptune",
-            "value":"Neptune"
+            "value":"neptune"
         }
     ]
 }

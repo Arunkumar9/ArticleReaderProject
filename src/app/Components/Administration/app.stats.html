@@ -1,17 +1,20 @@
 <div style='width:100%;float: left;'>
     <div style='width:50%;float: left;'>
-        <div class="ghaphsHeader">Category-wise Hit Count</div>
-        <p-chart type="pie" [data]="categoryData" (onDataSelect)="onPieClick($event)"></p-chart>
+        <p-panel header="Category-wise Hit Count" class="ghaphsHeader">
+            <p-chart type="pie" [data]="categoryData" (onDataSelect)="onPieClick($event)"></p-chart>
+        </p-panel>
     </div>
     <div style='width:50%;float: right;'>
-        <div class="ghaphsHeader">{{categoryName}}-Article-wise Hit Count</div>
-        <p-chart type="bar" [data]="articlebarData" (onDataSelect)="onBarClick($event)"></p-chart>
+        <p-panel header="{{categoryName}}-Article-wise Hit Count" class="ghaphsHeader">
+            <p-chart type="bar" [data]="articlebarData" (onDataSelect)="onBarClick($event)"></p-chart>
+        </p-panel>
     </div>
     <div style='width:100%;float: left;'>
-        <p-dataTable [value]="monthlyData">
-            
-            <p-column field="month" header="Month" [sortable]="true"></p-column>
-            <p-column field="hitCount" header="Hit Count" [sortable]="true"></p-column>
-        </p-dataTable>
+        <p-panel header="{{categoryName}}-{{articleName}}-Article-wise Hit Count">
+            <p-dataTable [value]="monthlyData">      
+                <p-column field="month" header="Month" [sortable]="true"></p-column>
+                <p-column field="hitCount" header="Hit Count" [sortable]="true"></p-column>
+            </p-dataTable>
+        </p-panel>
     </div>
 </div>

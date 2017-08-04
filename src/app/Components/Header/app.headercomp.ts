@@ -55,4 +55,11 @@ export class AppHeaderComp implements OnInit {
         this.headerService.getLanguages()
                           .subscribe(languages => this.languages = languages, error =>  this.errorMessage = <any>error);
     }
+
+    onThemeChange(event){
+        var theme = event.value;
+        let themeLink: HTMLLinkElement = <HTMLLinkElement> document.getElementById('theme-css');
+        themeLink.href = 'assets/themes/' + theme + '/theme.min.css';
+        //event.preventDefault();
+    }
 }

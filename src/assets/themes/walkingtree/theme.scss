@@ -12,8 +12,15 @@
 }
 
 .ui-widget-header {
-  background: linear-gradient(to bottom, #fffcfc 0%, #b3a7a1 100%);
+   background: #f36624;
 }
+
+// .ui-state-default{
+//   border: 2px solid #1aaf17;
+//   background: #29c327;
+//   color: #555;
+// }
+
 
 /* Validation */
 .ui-inputtext.ng-dirty.ng-invalid,

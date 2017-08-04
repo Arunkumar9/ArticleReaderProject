@@ -29,6 +29,7 @@ export class AppArticleStatus implements OnInit{
     monthlyStats:Array<any>;
     monthlyData:MonthlyStats[];
     monthlyHeading:string = 'Article-wise hit count';
+    articleName:any;
 
     constructor(private articleStatsService: ArticleStatsService,
                 private route: ActivatedRoute,
@@ -121,7 +122,8 @@ export class AppArticleStatus implements OnInit{
                 this.monthlyData = monthRec.monthlyHitCounts;
                 break;
             }
-        }
+        }    
+        this.articleName = id;
     }
 
 }

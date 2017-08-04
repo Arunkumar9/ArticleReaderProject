@@ -15,11 +15,19 @@
    background: #f36624;
 }
 
-// .ui-state-default{
-//   border: 2px solid #1aaf17;
-//   background: #29c327;
-//   color: #555;
-// }
+.ui-state-default{
+  border: 2px solid #1aaf17;
+  background: #29c327;
+  color: #555;
+}
+
+.ui-state-default.ui-state-active{
+  border: 2px solid #bebebe;
+  background: #d6d6d6;
+  color: #555;
+}
+
+
 
 
 /* Validation */

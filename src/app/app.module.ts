@@ -8,6 +8,8 @@ import { TruncateModule } from 'ng2-truncate';
 
 import { InMemoryWebApiModule }     from 'angular-in-memory-web-api';
 
+import { LimitWordPipe } from './common/ux/limitpipe/limitwordPipe';
+
 import { AppComponent } from './app.component';
 import { AppHeaderComp } from './Components/Header/app.headercomp';
 import { AppArticleTree } from './Components/ArticleTree/app.articletree';
@@ -33,6 +35,8 @@ import { ArticleStatsService } from './Services/ArticleTree/articlestats.service
 
 //import { InMemoryDataService } from './Services/ArticleTree/articletreeinmemory.service';
 
+import { ReadMoreComponent } from './common/ux/ReadMore/ReadMoreComponent';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -56,12 +60,14 @@ import { ArticleStatsService } from './Services/ArticleTree/articlestats.service
     //InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
+    LimitWordPipe,
     AppComponent,
     AppHeaderComp,
     AppArticleTree,
     AppArticleDashBoard,
     AppAdministration,
-    AppArticleStatus
+    AppArticleStatus,
+    ReadMoreComponent
   ], 
   providers: [TreeDragDropService,ArticleTreeService,ArticleStatsService],
   bootstrap: [AppComponent]

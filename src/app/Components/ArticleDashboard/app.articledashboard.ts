@@ -18,11 +18,10 @@ import { ArticlesModel } from '../../Models/Articles/articles';
 
 import { AppAdministration } from '../Administration/app.administration';
 
-
 @Component({
     selector : 'app-articledashboard',
     templateUrl : './app.articledashboard.html',
-    styleUrls : ['./app.articledashboard.css']
+    styleUrls : ['./app.articledashboard.css']    
 })
 
 export class AppArticleDashBoard implements OnInit{
